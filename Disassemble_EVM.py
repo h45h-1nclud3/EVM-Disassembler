@@ -275,7 +275,7 @@ def disasseble(contract_opcodes):
         opcode = opcode.upper()
         digits_in_opcode = ''.join(re.findall(pat, opcodes_instructions[opcode]))
     
-        if digits_in_opcode != "" and opcodes_instructions[opcode].startswith("PUSH") == True and opcodes_instructions[opcode].endswith("0") == False:
+        if digits_in_opcode != "" and opcodes_instructions[opcode].startswith("PUSH") == True and opcodes_instructions[opcode] != "PUSH0":
             # print instructions with values that are not opcodes
             print(f"{hex(program_counter)}: --> {opcodes_instructions[opcode]}" + " ---> 0x" + contract_opcodes[program_counter*2+2:(program_counter + int(digits_in_opcode))*2 +2])
             program_counter += int(digits_in_opcode) 
